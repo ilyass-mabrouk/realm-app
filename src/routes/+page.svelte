@@ -1,2 +1,14 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	export let data;
+
+	const user = data.user;
+</script>
+
+{#if user}
+	Connected user: {JSON.stringify(user)}
+	<form method="POST" action="/logout">
+		<button>Logout</button>
+	</form>
+{:else}
+	Disconnected user <a href="/login">Login</a>
+{/if}
